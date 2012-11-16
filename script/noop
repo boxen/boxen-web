@@ -1,0 +1,4 @@
+#!/bin/sh
+# Don't do anything but load the app environment.
+
+exec ruby -r ./config/environment -e 0

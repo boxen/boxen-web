@@ -1,0 +1,8 @@
+#!/bin/sh
+# Start the development server.
+
+cd $(dirname "$0")/..
+: ${RAILS_ENV:=development}
+
+script/bootstrap &&
+  exec bin/unicorn -E "$RAILS_ENV" -c config/unicorn/development.rb

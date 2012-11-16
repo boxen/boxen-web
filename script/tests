@@ -1,0 +1,9 @@
+#!/bin/sh
+# Run the tests.
+
+root=$(cd "$(dirname $0)"/.. && pwd)
+tests=$(find "$root/test" -type f -name '*_test.rb')
+
+RAILS_ENV=test ruby -I "$root/lib:$root/test" \
+  -r "$root/config/environment" \
+  -e '(ARGV.empty? ? Dir["test/**/*_test.rb"] : ARGV).each { |f| load f }' "$@"

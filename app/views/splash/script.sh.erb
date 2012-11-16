@@ -1,0 +1,72 @@
+set -e
+set -u
+
+# clean up /tmp/gs on exit if we were run like that
+if [ "$0" = "/tmp/gs" ]; then
+    trap 'rm -f /tmp/gs' EXIT
+fi
+
+OSX_VERSION_CHECK=`sw_vers | grep ProductVersion | cut -f 2 -d ':'  | egrep '10\.[7-8]'`
+
+if [ $? != 0 ]; then
+    echo 'You must be on Lion or greater!'
+    exit 1
+fi
+
+# show the banner and wait for a response
+printf "%s" $'\e[1;32m
+    ########   #######  ##     ## ######## ##    ##
+    ##     ## ##     ##  ##   ##  ##       ###   ##
+    ##     ## ##     ##   ## ##   ##       ####  ##
+    ########  ##     ##    ###    ######   ## ## ##
+    ##     ## ##     ##   ## ##   ##       ##  ####
+    ##     ## ##     ##  ##   ##  ##       ##   ###
+    ########   #######  ##     ## ######## ##    ##
+\e[0m
+    So here\'s the deal. I\'m going to set up this machine for you,
+    and you\'re going to sit back and let me. It\'s going to take me a
+    while, but I think you\'ll be happy with what I do.
+\e[0;1m
+    Ready to get started? Brutalize a key with your favorite finger.\e[0m'
+read -n 1 -s
+
+# prompt for sudo access. if correct we're good to go.
+echo "
+
+--> For added privacy invasion I'll need your local account's password."
+sudo -p "    Password for sudo: " echo "    Sweet, thanks. I'll see you in Vegas, sucker."
+
+echo "
+--> Making sure /opt/boxen exists and belongs to you."
+
+sudo mkdir -p /opt/boxen
+sudo chown $USER:staff /opt/boxen
+
+if [ ! -f /opt/boxen/repo/.snapshot ]; then
+  echo
+  echo "--> Grabbing code."
+
+  mkdir -p /opt/boxen/repo
+  cd /opt/boxen/repo
+
+  curl --progress-bar -L '<%= view.download_url %>' | tar -xz - --strip-components 1
+  touch .snapshot
+fi
+
+echo "
+--> Configuring. Prepare for a long wait and some weird output.
+    I might have to ask you for your password again too."
+
+# Make sure sudo hasn't timed out.
+
+sudo -p "    Password for sudo again: "  true
+
+cd /opt/boxen/repo
+script/boxen
+
+cd $HOME
+
+echo "
+You're good to go! Make sure to source /opt/boxen/env.sh in your
+shell config if you want all the good stuff to work.
+"

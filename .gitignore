@@ -1,0 +1,7 @@
+/.bundle
+/.env*
+/.rbenv-version
+/.sass-cache
+/bin
+/log
+/tmp

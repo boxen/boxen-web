@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Boxen</title>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div id="width">
+      <h1>Boxen</h1><p class="trade">&#8482;</p>
+
+      <% if view.secondary_message %>
+        <p class="desc"><%= view.secondary_message.html_safe %></p>
+      <% end %>
+
+      <div class="curl">
+        <div class="inner">
+          curl -s <a href="<%= view.script_path %>"><%= view.script_url %></a> > /tmp/gs; bash /tmp/gs
+        </div>
+      </div>
+
+      <div class="shadow"></div>
+      <p>Run this in your Terminal, <%= view.login %>. Trust me, I'm a
+      robot.</p>
+    </div>
+  </body>
+</html>

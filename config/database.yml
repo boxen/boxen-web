@@ -1,0 +1,16 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: boxen_development
+  pool: 5
+  port: <%= ENV["BOXEN_POSTGRESQL_PORT"] || 5432 %>
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: boxen_test
+  pool: 5
+  port: <%= ENV["BOXEN_POSTGRESQL_PORT"] || 5432 %>
+
+production:
+  development

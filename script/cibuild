@@ -1,0 +1,5 @@
+#!/bin/sh
+# The entry point for CI.
+
+git clean -dfx -e /.bundle
+exec time script/tests
