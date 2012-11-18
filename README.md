@@ -12,6 +12,24 @@ We assume you already have Boxen working on your machine.
 
 ## Deployment
 
+The tl;dr version is you can run something like this:
+
+Make a new GitHub OAuth Application. Then, run:
+
+``` sh
+heroku create my-new-boxen
+heroku config:set \
+  REPOSITORY="our-org/our-boxen" \
+  GITHUB_CLIENT_ID="REDACTED" \
+  GITHUB_CLIENT_SECRET="REDACTED" \
+  GITHUB_TEAM_ID=99999999 \
+  SECONDARY_MESSAGE="Do a thing before running the command below."
+git push heroku master
+heroku run bundle exec rake db:migrate
+```
+
+For details as to how and why, see the sections below.
+
 ### GitHub OAuth Application
 
 Boxen Web utilizes GitHub OAuth to authenticate users because most Boxen
