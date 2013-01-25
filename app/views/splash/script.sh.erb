@@ -13,6 +13,20 @@ if [ $? != 0 ]; then
     exit 1
 fi
 
+if [ ! -f /usr/bin/gcc ]; then
+  printf "%s\n" $'
+You need to have Xcode with Command Line Tools installed before you can
+continue.
+
+  1. Go to the App Store and install Xcode.
+  2. Start Xcode.
+  3. Click on Xcode in the top left corner of the menu bar and click on
+     Preferences.
+  4. Click on the Downloads tab.
+  5. Click on the Install button next to Command Line Tools.'
+  exit 1
+fi
+
 # show the banner and wait for a response
 printf "%s" $'\e[1;32m
     ########   #######  ##     ## ######## ##    ##
