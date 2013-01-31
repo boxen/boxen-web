@@ -1,25 +1,25 @@
 @font-face {
   font-family: 'MenschBold';
-  src: url('fonts/mensch-bold-webfont.ttf'),
-       url('../fonts/mensch-bold-webfont.eot'),
-       url('../fonts/mensch-bold-webfont.woff'),
-       url('../fonts/mensch-bold-webfont.svg'); 
+  src: url('/assets/mensch-bold-webfont.ttf'),
+       url('/assets/mensch-bold-webfont.eot'),
+       url('/assets/mensch-bold-webfont.woff'),
+       url('/assets/mensch-bold-webfont.svg');
 }
 
 @font-face {
   font-family: 'ProximaNovaRegular';
-  src: url('../fonts/proximanova-regular-webfont.ttf'),
-       url('../fonts/proximanova-regular-webfont.eot'),
-       url('../fonts/proximanova-regular-webfont.woff'),
-       url('../fonts/proximanova-regular-webfont.svg'); 
+  src: url('/assets/proximanova-regular-webfont.ttf'),
+       url('/assets/proximanova-regular-webfont.eot'),
+       url('/assets/proximanova-regular-webfont.woff'),
+       url('/assets/proximanova-regular-webfont.svg');
 }
 
 @font-face {
   font-family: 'ProximaNovaBold';
-  src: url('../fonts/proximanova-bold-webfont.ttf'),
-       url('../fonts/proximanova-bold-webfont.eot'),
-       url('../fonts/proximanova-bold-webfont.woff'),
-       url('../fonts/proximanova-bold-webfont.svg'); 
+  src: url('/assets/proximanova-bold-webfont.ttf'),
+       url('/assets/proximanova-bold-webfont.eot'),
+       url('/assets/proximanova-bold-webfont.woff'),
+       url('/assets/proximanova-bold-webfont.svg');
 }
 
 html, body {
@@ -55,8 +55,8 @@ p {
   padding: 8px 0;
   background-color: rgba(255,255,255,.7);
   background-color: rgba(255,255,255,.42);
-  box-shadow: inset 0 -1px 2px rgba(255,255,255,.5), 
-                inset 0 0 5px rgba(255,255,255,.3), 
+  box-shadow: inset 0 -1px 2px rgba(255,255,255,.5),
+                inset 0 0 5px rgba(255,255,255,.3),
                       0 1px 1px rgba(0,0,0,.03);
 
   strong {
