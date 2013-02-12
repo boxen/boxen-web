@@ -3,6 +3,7 @@ development:
   encoding: unicode
   database: boxen_development
   pool: 5
+  host: localhost
   port: <%= ENV["BOXEN_POSTGRESQL_PORT"] || 5432 %>
 
 test:

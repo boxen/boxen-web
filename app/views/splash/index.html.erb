@@ -7,22 +7,16 @@
   </head>
 
   <body>
+    <% if view.secondary_message %>
+      <p><strong>One thing &nbsp;</strong><%= view.secondary_message.html_safe %></p>
+    <% end %>
     <div id="width">
-      <h1>Boxen</h1><p class="trade">&#8482;</p>
-
-      <% if view.secondary_message %>
-        <p class="desc"><%= view.secondary_message.html_safe %></p>
-      <% end %>
-
-      <div class="curl">
-        <div class="inner">
-          curl -s <a href="<%= view.script_path %>"><%= view.script_url %></a> > /tmp/gs; bash /tmp/gs
-        </div>
+      <h1>Welcome to Boxen</h1>
+      <div class="code">
+        curl -s <a href="<%= view.script_path %>"><%= view.script_url %></a> > /tmp/install-boxen; 
+        bash /tmp/install-boxen
       </div>
-
-      <div class="shadow"></div>
-      <p>Run this in your Terminal, <%= view.login %>. Trust me, I'm a
-      robot.</p>
+      <h2> Run this command in your terminal to install Boxen on your machine.</h2>
     </div>
   </body>
 </html>
