@@ -2,7 +2,7 @@ class AuthController < ApplicationController
   skip_before_filter :auth, :only => :create
 
   def create
-    if team_access?
+    if team_access? || ENV['GITHUB_TEAM_ID'].nil?
       user = User.where(
         :github_id => auth_hash['uid'],
         :login => auth_hash['info']['nickname']
@@ -29,8 +29,6 @@ class AuthController < ApplicationController
   end
 
   def team_access?
-    return true if ENV['GITHUB_TEAM_ID'].nil?
-
     host   = "https://api.github.com"
     path   = "/teams/#{ENV['GITHUB_TEAM_ID']}/members"
     params = "access_token=#{auth_hash.credentials['token']}"
