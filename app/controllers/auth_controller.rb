@@ -29,6 +29,8 @@ class AuthController < ApplicationController
   end
 
   def team_access?
+    return true if ENV['GITHUB_TEAM_ID'].nil?
+
     host   = "https://api.github.com"
     path   = "/teams/#{ENV['GITHUB_TEAM_ID']}/members"
     params = "access_token=#{auth_hash.credentials['token']}"
