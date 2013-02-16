@@ -8,7 +8,7 @@ We assume you already have Boxen working on your machine.
     $ script/bootstrap
     $ script/tests
     $ script/server
-    $ open http://localhost:9393/
+    $ open http://localhost:9393
 
 ## Deployment
 
@@ -37,11 +37,11 @@ Boxen Web utilizes GitHub OAuth to authenticate users because most Boxen
 configurations for organizations will be private -- this requires an access
 token to fetch the repository in the install script.
 
-If your deployment lives at `https://my-new-boxen.herokuapp.com/`,
+If your deployment lives at `https://my-new-boxen.herokuapp.com`,
 you will need to create a GitHub OAuth application with the following config:
 
 * Name - Boxen Web
-* URL  - https://my-new-boxen.herokuapp.com/
+* URL  - https://my-new-boxen.herokuapp.com
 * Callback URL - https://my-new-boxen.herokuapp.com/auth/github/callback
 
 ### Heroku
