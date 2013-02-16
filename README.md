@@ -23,7 +23,8 @@ heroku config:set \
   GITHUB_CLIENT_ID="REDACTED" \
   GITHUB_CLIENT_SECRET="REDACTED" \
   GITHUB_TEAM_ID=99999999 \
-  SECONDARY_MESSAGE="Do a thing before running the command below."
+  SECONDARY_MESSAGE="Do a thing before running the command below." \
+  SECRET_TOKEN="your cookie signing token here"
 git push heroku master
 heroku run bundle exec rake db:migrate
 ```
