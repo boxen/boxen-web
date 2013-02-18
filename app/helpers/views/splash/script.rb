@@ -6,12 +6,17 @@ module Views
       end
 
       def endpoint
-        "https://api.github.com/repos/#{ENV['REPOSITORY']}/tarball"
+        "#{github_url}/repos/#{ENV['REPOSITORY']}/tarball"
       end
 
       def download_url
         "#{endpoint}?access_token=#{@access_token}"
       end
+
+      def github_url
+        ENV['GITHUB_ENTERPRISE_URL'] || 'https://api.github.com'
+      end
+
     end
   end
 end

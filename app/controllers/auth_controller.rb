@@ -20,16 +20,21 @@ class AuthController < ApplicationController
 
   def destroy
     session.clear
-    redirect_to 'https://github.com'
+    redirect_to github_url(:github)
   end
 
   protected
+
+  def github_url(gh_domain)
+    ENV['GITHUB_ENTERPRISE_URL'] || "https://#{gh_domain}.com"
+  end
+
   def auth_hash
     env['omniauth.auth']
   end
 
   def team_access?
-    host   = "https://api.github.com"
+    host   = github_url('api.github')
     path   = "/teams/#{ENV['GITHUB_TEAM_ID']}/members"
     params = "access_token=#{auth_hash.credentials['token']}"
     uri    = URI.parse("#{host}#{path}?#{params}")
