@@ -117,7 +117,10 @@ h2 {
   margin-bottom: 0;
   position: relative;
   text-align: right;
-  transform: rotate(10deg);
+  -webkit-transform: rotate(10deg);
+  -moz-transform: rotate(10deg);
+  -ms-transform: rotate(10deg);
+  -o-transform: rotate(10deg);
 }
 
 .code {
