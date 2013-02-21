@@ -11,12 +11,15 @@
       <p><strong>One thing &nbsp;</strong><%= view.secondary_message.html_safe %></p>
     <% end %>
     <div id="width">
+      <% if view.user_org %>
+        <div class="stamp"><%= view.user_org.html_safe %></div>
+      <% end %>
       <h1>Welcome to Boxen</h1>
       <div class="code">
-        curl -s <a href="<%= view.script_path %>"><%= view.script_url %></a> > /tmp/install-boxen; 
+        curl -s <a href="<%= view.script_path %>"><%= view.script_url %></a> > /tmp/install-boxen;
         bash /tmp/install-boxen
       </div>
-      <h2> Run this command in your terminal to install Boxen on your machine.</h2>
+      <h2>Run this command in your terminal to install Boxen on your machine.</h2>
     </div>
   </body>
 </html>
