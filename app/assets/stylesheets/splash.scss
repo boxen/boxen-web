@@ -1,4 +1,12 @@
 @font-face {
+  font-family: 'Stamp';
+  src: url('/assets/stamp-webfont.ttf'),
+       url('/assets/stamp-webfont.eot'),
+       url('/assets/stamp-webfont.woff'),
+       url('/assets/stamp-webfont.svg');
+}
+
+@font-face {
   font-family: 'MenschBold';
   src: url('/assets/mensch-bold-webfont.ttf'),
        url('/assets/mensch-bold-webfont.eot'),
@@ -97,6 +105,22 @@ h2 {
   font-size: 16px;
   margin-top: 29px;
   text-shadow: 0 1px 1px rgba(255,255,255,.2);
+}
+
+.stamp {
+  color: #f00;
+  font-family: 'Stamp';
+  font-size: 60px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 0;
+  margin-bottom: 0;
+  position: relative;
+  text-align: right;
+  -webkit-transform: rotate(10deg);
+  -moz-transform: rotate(10deg);
+  -ms-transform: rotate(10deg);
+  -o-transform: rotate(10deg);
 }
 
 .code {
