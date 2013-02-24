@@ -58,3 +58,7 @@ should be set via `heroku config:set`:
 * optional
   * `GITHUB_TEAM_ID` to restrict access to members of a team.
   * `SECONDARY_MESSAGE` to display an optional message on the main page.
+
+## Halp!
+
+Use Issues or #boxen on irc.freenode.net.
