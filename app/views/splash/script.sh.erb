@@ -1,9 +1,9 @@
 set -e
 set -u
 
-# clean up /tmp/gs on exit if we were run like that
-if [ "$0" = "/tmp/gs" ]; then
-    trap 'rm -f /tmp/gs' EXIT
+# clean up /tmp/install-boxen on exit if we were run like that
+if [ "$0" = "/tmp/install-boxen" ]; then
+    trap 'rm -f /tmp/install-boxen' EXIT
 fi
 
 OSX_VERSION_CHECK=`sw_vers | grep ProductVersion | cut -f 2 -d ':'  | egrep '10\.8'`
