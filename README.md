@@ -25,6 +25,7 @@ heroku config:set \
   GITHUB_TEAM_ID=99999999 \
   SECONDARY_MESSAGE="Do a thing before running the command below." \
   SECRET_TOKEN="your cookie signing token here"
+  GITHUB_ENTERPRISE_URL=https://github.<your_company>.com
 git push heroku master
 heroku run bundle exec rake db:migrate
 ```
@@ -58,3 +59,5 @@ should be set via `heroku config:set`:
 * optional
   * `GITHUB_TEAM_ID` to restrict access to members of a team.
   * `SECONDARY_MESSAGE` to display an optional message on the main page.
+  * `GITHUB_ENTERPRISE_URL` to use GHE for OAuth and `our-boxen` hosting.
+
