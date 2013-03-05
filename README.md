@@ -61,3 +61,6 @@ should be set via `heroku config:set`:
   * `SECONDARY_MESSAGE` to display an optional message on the main page.
   * `GITHUB_ENTERPRISE_URL` to use GHE for OAuth and `our-boxen` hosting.
 
+## Halp!
+
+Use Issues or #boxen on irc.freenode.net.
