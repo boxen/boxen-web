@@ -12,6 +12,10 @@ module Views
       def download_url
         "#{endpoint}?access_token=#{@access_token}"
       end
+
+      def repo_name
+        ENV['REPOSITORY']
+      end
     end
   end
 end
