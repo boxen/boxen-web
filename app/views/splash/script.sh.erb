@@ -77,7 +77,8 @@ echo "
 sudo -p "    Password for sudo again: "  true
 
 cd /opt/boxen/repo
-BOXEN_REPO_NAME=<%= view.repo_name %> script/boxen
+export BOXEN_REPO_NAME=<%= view.repo_name %>
+script/boxen
 
 cd $HOME
 
