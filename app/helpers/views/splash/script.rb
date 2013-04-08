@@ -13,6 +13,10 @@ module Views
         "#{endpoint}?access_token=#{@access_token}"
       end
 
+      def repo_name
+        ENV['REPOSITORY']
+      end
+
       def github_api_url
         ghe_url = ENV['GITHUB_ENTERPRISE_URL']
         ghe_url ? "#{ghe_url}/api/v3" : "https://api.github.com"
