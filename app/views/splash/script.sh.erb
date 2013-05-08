@@ -37,7 +37,8 @@ printf "%s" $'\e[1;32m
     ########  ##     ##    ###    ######   ## ## ##
     ##     ## ##     ##   ## ##   ##       ##  ####
     ##     ## ##     ##  ##   ##  ##       ##   ###
-    ########   #######  ##     ## ######## ##    ##
+    ########   #######  ##     ## ######## ##    ##\e[1;31m
+    <%= view.user_org.upcase if view.user_org %>
 \e[0m
     Hello! I\'m going to set up this machine for you. It might take me a bit
     of time before I\'m done, but you\'ll end up with a happy machine by the

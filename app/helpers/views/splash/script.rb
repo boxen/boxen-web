@@ -16,6 +16,10 @@ module Views
       def repo_name
         ENV['REPOSITORY']
       end
+
+      def user_org
+        ENV['USER_ORG']
+      end
     end
   end
 end
