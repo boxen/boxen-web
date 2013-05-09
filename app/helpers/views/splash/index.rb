@@ -34,6 +34,10 @@ module Views
       def secondary_message
         ENV['SECONDARY_MESSAGE']
       end
+
+      def user_org
+        ENV['USER_ORG']
+      end
     end
   end
 end

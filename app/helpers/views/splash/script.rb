@@ -17,11 +17,14 @@ module Views
         ENV['REPOSITORY']
       end
 
+      def user_org
+        ENV['USER_ORG']
+      end
+
       def github_api_url
         ghe_url = ENV['GITHUB_ENTERPRISE_URL']
         ghe_url ? "#{ghe_url}/api/v3" : "https://api.github.com"
       end
-
     end
   end
 end
