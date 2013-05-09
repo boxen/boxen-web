@@ -86,7 +86,7 @@ GEM
     omniauth (1.1.1)
       hashie (~> 1.2)
       rack
-    omniauth-github (1.0.3)
+    omniauth-github (1.1.0)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.1)
     omniauth-oauth2 (1.1.1)
@@ -161,7 +161,7 @@ DEPENDENCIES
   erubis (= 2.7.0)
   heroku
   jquery-rails (= 2.1.4)
-  omniauth-github (= 1.0.3)
+  omniauth-github (= 1.1.0)
   pg (= 0.14.1)
   pry
   rails (= 3.2.13)
