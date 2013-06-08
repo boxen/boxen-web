@@ -1,3 +1,5 @@
+require 'cgi'
+
 module Views
   module Splash
     class Script
@@ -6,7 +8,8 @@ module Views
       end
 
       def endpoint
-        "#{github_api_url}/repos/#{ENV['REPOSITORY']}/tarball"
+        escaped_ref_name = CGI.escape(ref_name)
+        "#{github_api_url}/repos/#{repo_name}/tarball/#{escaped_ref_name}"
       end
 
       def download_url
@@ -15,6 +18,10 @@ module Views
 
       def repo_name
         ENV['REPOSITORY']
+      end
+
+      def ref_name
+        ENV['REF'] || 'master'
       end
 
       def user_org
