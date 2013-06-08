@@ -23,6 +23,7 @@ heroku config:set \
   GITHUB_CLIENT_ID="REDACTED" \
   GITHUB_CLIENT_SECRET="REDACTED" \
   GITHUB_TEAM_ID=99999999 \
+  GITHUB_USER_NAME=my-github-name \
   SECONDARY_MESSAGE="Do a thing before running the command below." \
   SECRET_TOKEN="your cookie signing token here" \
   USER_ORG="your org name" \
@@ -61,6 +62,7 @@ should be set via `heroku config:set`:
   * `SECRET_TOKEN` for cookie signing. Minimum length is 30 characters.
 * optional
   * `GITHUB_TEAM_ID` to restrict access to members of a team.
+  * `GITHUB_USER_NAME` to restrict access to a single user by login name.
   * `SECONDARY_MESSAGE` to display an optional message on the main page.
   * `USER_ORG` to display an optional stamp with your username or organization.
   * `GITHUB_ENTERPRISE_URL` to use GHE for OAuth and `our-boxen` hosting.

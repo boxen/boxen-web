@@ -2,7 +2,7 @@ class AuthController < ApplicationController
   skip_before_filter :auth, :only => :create
 
   def create
-    if ENV['GITHUB_TEAM_ID'].nil? || team_access?
+    if access?
       user = User.where(
         :github_id => auth_hash['uid'],
         :login => auth_hash['info']['nickname']
@@ -34,6 +34,16 @@ class AuthController < ApplicationController
     env['omniauth.auth']
   end
 
+  def access?
+    (check_team_access? && team_access?) ||
+    (check_user_access? && user_access?) ||
+    (!check_team_access? && !check_user_access?)
+  end
+
+  def check_team_access?
+    !ENV['GITHUB_TEAM_ID'].nil?
+  end
+
   def team_access?
     host   = github_api_url
     path   = "/teams/#{ENV['GITHUB_TEAM_ID']}/members"
@@ -49,5 +59,13 @@ class AuthController < ApplicationController
     team_members.any? do |user_hash|
       user_hash['login'] == auth_hash['info']['nickname']
     end
+  end
+
+  def check_user_access?
+    !ENV['GITHUB_USER_NAME'].nil?
+  end
+
+  def user_access?
+    ENV['GITHUB_USER_NAME'] == auth_hash['info']['nickname']
   end
 end
