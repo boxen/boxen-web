@@ -57,6 +57,7 @@ should be set via `heroku config:set`:
   * `REPOSITORY` to know which repo to download/setup
   * `GITHUB_CLIENT_ID` for OAuth.
   * `GITHUB_CLIENT_SECRET` for OAuth.
+  * `SECRET_TOKEN` for cookie signing. Minimum length is 30 characters.
 * optional
   * `GITHUB_TEAM_ID` to restrict access to members of a team.
   * `SECONDARY_MESSAGE` to display an optional message on the main page.
