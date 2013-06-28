@@ -62,10 +62,10 @@ class AuthController < ApplicationController
   end
 
   def check_user_access?
-    !ENV['GITHUB_USER_NAME'].nil?
+    !ENV['GITHUB_LOGIN'].nil?
   end
 
   def user_access?
-    ENV['GITHUB_USER_NAME'] == auth_hash['info']['nickname']
+    ENV['GITHUB_LOGIN'] == auth_hash['info']['nickname']
   end
 end
