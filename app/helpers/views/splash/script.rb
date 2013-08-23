@@ -16,6 +16,10 @@ module Views
         "#{endpoint}?access_token=#{@access_token}"
       end
 
+      def access_token
+        @access_token
+      end
+
       def repo_name
         ENV['REPOSITORY']
       end
