@@ -8,7 +8,7 @@ class SplashController < ApplicationController
 
   def script
     if user = User.for_short_access_token(params[:token]).first
-      view = Views::Splash::Script.new(:access_token => user.access_token)
+      view = Views::Splash::Script.new(:access_token => user.access_token, :login => user.login)
 
       script_file = Rails.root.join('app', 'views', 'splash', 'script.sh.erb')
       script = Erubis::Eruby.new(File.read(script_file)).result(:view => view)
