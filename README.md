@@ -41,12 +41,12 @@ Boxen Web utilizes GitHub OAuth to authenticate users because most Boxen
 configurations for organizations will be private -- this requires an access
 token to fetch the repository in the install script.
 
-If your deployment lives at `https://my-new-boxen.herokuapp.com`,
+If your deployment lives at `https://example.herokuapp.com`,
 you will need to create a GitHub OAuth application with the following config:
 
 * Name - Boxen Web
-* URL  - https://my-new-boxen.herokuapp.com
-* Callback URL - https://my-new-boxen.herokuapp.com/auth/github/callback
+* URL  - https://example.herokuapp.com
+* Callback URL - https://example.herokuapp.com/auth/github/callback
 
 ### Heroku
 
