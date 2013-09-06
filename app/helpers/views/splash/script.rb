@@ -5,6 +5,7 @@ module Views
     class Script
       def initialize(params = {})
         @access_token = params.delete(:access_token)
+        @login = params.delete(:login)
       end
 
       def endpoint
@@ -18,6 +19,10 @@ module Views
 
       def access_token
         @access_token
+      end
+
+      def login
+        @login
       end
 
       def repo_name
