@@ -7,18 +7,19 @@ if [ "$0" = "/tmp/install-boxen" ]; then
 fi
 
 set +e
-OSX_VERSION_CHECK=`sw_vers | grep ProductVersion | cut -f 2 -d ':'  | egrep '10\.8|10\.9'`
+OSX_VERSION=`sw_vers | grep ProductVersion | cut -f 2 -d ':'  | awk ' { print $1; } '`
 
-if [ $? != 0 ]; then
+if [ ! $(echo $OSX_VERSION | egrep '10\.8|10\.9') ]; then
     echo 'You must be on Mountain Lion or greater!'
     exit 1
 fi
 set -e
 
-if [ ! -f /usr/bin/gcc ]; then
+if [ "$OSX_VERSION" = "10.8" ] && [ ! -f /usr/bin/gcc ]; then
   printf "%s\n" $'
-You need to have Xcode with Command Line Tools installed before you can
-continue.
+
+Since you are running OS X 10.8, you will need to install Xcode and the
+Command Line Tools to continue.
 
   1. Go to the App Store and install Xcode.
   2. Start Xcode.
@@ -27,6 +28,20 @@ continue.
   4. Click on the Downloads tab.
   5. Click on the Install button next to Command Line Tools.'
   exit 1
+fi
+
+if [ "$OSX_VERSION" = "10.9" ]; then
+  printf "%s\n" $'
+
+Since you are running OS X 10.9, you will need to install the Command
+Line Tools.
+
+  1. You should see a pop-up asking you to install them in a moment.
+  2. Click Install!'
+
+  until $(gcc -v); do
+    sleep 60
+  done
 fi
 
 # show the banner and wait for a response
