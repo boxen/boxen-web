@@ -34,12 +34,12 @@ if [ "$OSX_VERSION" = "10.9" ]; then
   printf "%s\n" $'
 
 Since you are running OS X 10.9, you will need to install the Command
-Line Tools.
+Line Tools (even if you already have Xcode installed).
 
   1. You should see a pop-up asking you to install them in a moment.
   2. Click Install!'
 
-  until $(gcc -v); do
+  until $(gcc -v >/dev/null) && test -d /usr/include; do
     sleep 60
   done
 fi
