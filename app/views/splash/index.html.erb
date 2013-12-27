@@ -15,11 +15,9 @@
         <div class="stamp"><%= view.user_org.html_safe %></div>
       <% end %>
       <h1>Welcome to Boxen</h1>
-      <div class="code">
-        curl -s <a href="<%= view.script_path %>"><%= view.script_url %></a> > /tmp/install-boxen;
-        bash /tmp/install-boxen
-      </div>
+      <textarea class="code" spellcheck="false" onclick="this.focus();this.select();">curl -s <%= view.script_url %> &gt; /tmp/install-boxen; bash /tmp/install-boxen</textarea>
       <h2>Run this command in your terminal to install Boxen on your machine.</h2>
+      <h3>Go ahead. <a href="<%= view.script_path %>">Take a peek</a>.</h3>
     </div>
   </body>
 </html>
