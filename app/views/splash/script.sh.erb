@@ -15,7 +15,7 @@ if [ ! $(echo $OSX_VERSION | egrep '10\.8|10\.9') ]; then
 fi
 set -e
 
-if [ "$OSX_VERSION" = "10.8" ] && [ ! -f /usr/bin/gcc ]; then
+if [[ $OSX_VERSION =~ ^10\.8 ]] && [ ! -f /usr/bin/gcc ]; then
   printf "%s\n" $'
 
 Since you are running OS X 10.8, you will need to install Xcode and the
@@ -30,7 +30,7 @@ Command Line Tools to continue.
   exit 1
 fi
 
-if [ "$OSX_VERSION" = "10.9" ]; then
+if [[ $OSX_VERSION =~ ^10\.9 ]]; then
   printf "%s\n" $'
 
 Since you are running OS X 10.9, you will need to install the Command
