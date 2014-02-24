@@ -7,6 +7,7 @@ We assume you already have Boxen working on your machine.
     $ cd ~/src/boxen-web
     $ script/bootstrap
     $ script/tests
+    $ bin/rake db:schema:load
     $ script/server
     $ open http://localhost:9393
 
