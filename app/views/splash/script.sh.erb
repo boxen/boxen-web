@@ -94,6 +94,14 @@ sudo -p "    Password for sudo again: "  true
 
 cd /opt/boxen/repo
 export BOXEN_REPO_NAME=<%= view.repo_name %>
+
+CLT_VERSION=`pkgutil --pkg-info=com.apple.pkg.CLTools_Executables | grep version | cut -f 2 -d ' ' | awk ' { print $1; } '`
+
+# Fix for LLVM that ships with Xcode 5.1
+if [[ $CLT_VERSION =~ ^5\.1\.0\.0\.1\.1396320587 ]]; then
+  export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future
+fi
+
 script/boxen --token <%= view.access_token %> --login <%= view.login %>
 
 cd $HOME
