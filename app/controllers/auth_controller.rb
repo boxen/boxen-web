@@ -45,8 +45,10 @@ class AuthController < ApplicationController
   end
 
   def team_access?
+    nick   = auth_hash['info']['nickname']
+
     host   = github_api_url
-    path   = "/teams/#{ENV['GITHUB_TEAM_ID']}/members"
+    path   = "/teams/#{ENV['GITHUB_TEAM_ID']}/members/#{nick}"
     params = "access_token=#{auth_hash.credentials['token']}"
     uri    = URI.parse("#{host}#{path}?#{params}")
 
@@ -54,11 +56,7 @@ class AuthController < ApplicationController
     request      = Net::HTTP::Get.new("#{uri.path}?#{uri.query}")
     http.use_ssl = true
 
-    team_members = JSON.parse(http.request(request).body)
-
-    team_members.any? do |user_hash|
-      user_hash['login'] == auth_hash['info']['nickname']
-    end
+    http.request(request).code == '204'
   end
 
   def check_user_access?
