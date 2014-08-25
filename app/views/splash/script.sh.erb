@@ -31,7 +31,7 @@ Line Tools from the Software Update servers automatically.'
 
   # find the update with the right name, and grab its identifier
   PROD=$(softwareupdate -l | grep -B 1 "${TOOLS_REGEX}" | \
-         awk -F"*" '/^ +*/ {print $2}' | sed 's/^ *//' | head -n 1)
+         awk -F"*" '/^ +\*/ {print $2}' | sed 's/^ *//' | head -n 1)
 
   # install it
   # amazingly, it won't find the update if we put the update ID in double-quotes
