@@ -30,10 +30,10 @@ Command Line Tools to continue.
   exit 1
 fi
 
-if [[ $OSX_VERSION =~ ^10\.9 ]]; then
+if [[ $OSX_VERSION =~ ^10\.(9|10) ]]; then
   printf "%s\n" $'
 
-Since you are running OS X 10.9, you will need to install the Command
+Since you are running OS X ${OSX_VERSION}, you will need to install the Command
 Line Tools (even if you already have Xcode installed).
 
   1. You should see a pop-up asking you to install them in a moment.
