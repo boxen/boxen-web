@@ -2,7 +2,7 @@
 
 ## Development
 
-We assume you already have Boxen working on your machine.
+We assume you already have Boxen working on your machine. You also need PostgreSQL installed.
 
     $ cd ~/src/boxen-web
     $ script/bootstrap
