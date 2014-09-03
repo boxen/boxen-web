@@ -82,6 +82,21 @@ else
   fi
 fi
 
+# Correct a ruby config bug in Yosemite DP7
+# Apple radar 18216493 filed 2014-09-03
+#
+# This manifests as being unable to install gems with C extensions,
+# because the linker will fail unable to find the CrashReporterSupport
+# framework
+if [ "$OSX_VERSION" -eq 10 ]; then
+  RBCONFIG=/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/universal-darwin14/rbconfig.rb
+  INTERNALSDK=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.Internal.sdk
+
+  if grep $INTERNAL_SDK $RBCONFIG; then
+    sed -i '' s:$INTERNAL_SDK:: $RBCONFIG
+  fi
+fi
+
 echo "
 --> Making sure /opt/boxen exists and belongs to you."
 
