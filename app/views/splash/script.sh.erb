@@ -90,7 +90,7 @@ fi
 # framework
 if [ "$OSX_VERSION" -eq 10 ]; then
   RBCONFIG=/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/universal-darwin14/rbconfig.rb
-  INTERNALSDK=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.Internal.sdk
+  INTERNAL_SDK=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.Internal.sdk
 
   if grep $INTERNAL_SDK $RBCONFIG; then
     sed -i '' s:$INTERNAL_SDK:: $RBCONFIG
