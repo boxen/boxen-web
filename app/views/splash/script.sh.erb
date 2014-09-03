@@ -7,42 +7,13 @@ if [ "$0" = "/tmp/install-boxen" ]; then
 fi
 
 set +e
-OSX_VERSION=`sw_vers | grep ProductVersion | cut -f 2 -d ':'  | awk ' { print $1; } '`
+OSX_VERSION=$(sw_vers -productVersion | awk -F "." '{print $2}')
 
-if [ ! $(echo $OSX_VERSION | egrep '10\.8|10\.9') ]; then
-    echo 'You must be on Mountain Lion or greater!'
+if [ "$OSX_VERSION" -lt 8 ] || [ "$OSX_VERSION" -gt 10 ]; then
+    echo 'You must be running on Mountain Lion, Mavericks or Yosemite!'
     exit 1
 fi
 set -e
-
-if [[ $OSX_VERSION =~ ^10\.8 ]] && [ ! -f /usr/bin/gcc ]; then
-  printf "%s\n" $'
-
-Since you are running OS X 10.8, you will need to install Xcode and the
-Command Line Tools to continue.
-
-  1. Go to the App Store and install Xcode.
-  2. Start Xcode.
-  3. Click on Xcode in the top left corner of the menu bar and click on
-     Preferences.
-  4. Click on the Downloads tab.
-  5. Click on the Install button next to Command Line Tools.'
-  exit 1
-fi
-
-if [[ $OSX_VERSION =~ ^10\.9 ]]; then
-  printf "%s\n" $'
-
-Since you are running OS X 10.9, you will need to install the Command
-Line Tools (even if you already have Xcode installed).
-
-  1. You should see a pop-up asking you to install them in a moment.
-  2. Click Install!'
-
-  until $(gcc -v >/dev/null) && test -d /usr/include; do
-    sleep 60
-  done
-fi
 
 # show the banner and wait for a response
 printf "%s" $'\e[1;32m
@@ -67,6 +38,49 @@ echo "
 
 --> For added privacy invasion I'll need your local account's password."
 sudo -p "    Password for sudo: " echo "    Sweet, thanks. I'll see you in Vegas, sucker."
+
+# on 10.9 and 10.10, we can leverage SUS to get the latest CLI tools
+if [[ "$OSX_VERSION" -ge 9 ]] && [[ ! -d /usr/include ]]; then
+  echo "
+--> Installing command-line tools for OS X ${OSX_VERSION}"
+
+  [ "$OSX_VERSION" -eq 9 ]  && TOOLS_REGEX="Command Line Developer"
+  [ "$OSX_VERSION" -eq 10 ] && TOOLS_REGEX="Command Line Tools"
+  PLACEHOLDER=/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+
+  # create the placeholder file that's checked by CLI updates' .dist code
+  # in Apple's SUS catalog
+  touch $PLACEHOLDER
+
+  # find the update with the right name, and grab its identifier
+  PROD=$(softwareupdate -l | grep -B 1 "${TOOLS_REGEX}" | \
+         awk -F"*" '/^ +\*/ {print $2}' | sed 's/^ *//' | head -n 1)
+
+  # install it
+  softwareupdate -i "${PROD}"
+
+  # remove the placeholder
+  [[ -f $PLACEHOLDER ]] && rm $PLACEHOLDER
+else
+  if [[ ! -f /usr/bin/gcc ]]; then
+    echo "
+--> Installing command-line tools for Mavericks"
+
+    # on 10.8, we instead download from public download URLs, which can
+    # be found in the dvtdownloadableindex:
+    # https://devimages.apple.com.edgekey.net/downloads/xcode/simulators/index-3905972D-B609-49CE-8D06-51ADC78E07BC.dvtdownloadableindex
+    DMGURL=http://devimages.apple.com/downloads/xcode/command_line_tools_for_osx_mountain_lion_april_2014.dmg
+
+    TOOLS=/tmp/clitools.dmg
+    curl "$DMGURL" -o "$TOOLS"
+    TMPMOUNT=`/usr/bin/mktemp -d /tmp/clitools.XXXX`
+    hdiutil attach "$TOOLS" -mountpoint "$TMPMOUNT"
+    installer -pkg "$(find $TMPMOUNT -name '*.mpkg')" -target /
+    hdiutil detach "$TMPMOUNT"
+    rm -rf "$TMPMOUNT"
+    rm "$TOOLS"
+  fi
+fi
 
 echo "
 --> Making sure /opt/boxen exists and belongs to you."
