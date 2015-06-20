@@ -1,13 +1,13 @@
-ruby   "2.0.0"
+ruby   "2.2.2"
 source "https://rubygems.org"
 
 gem "dotenv",             "0.4.0"
 gem "erubis",             "2.7.0"
 gem "jquery-rails",       "2.1.4"
-gem "omniauth-github",    "1.1.0"
-gem "pg",                 "0.14.1"
-gem "rails",              "~> 3.2.21"
-gem "unicorn",            "4.5.0"
+gem "omniauth-github",    "1.1.2"
+gem "pg",                 "0.18.2"
+gem "rails",              "~> 3.2.22"
+gem "unicorn",            "4.9.0"
 
 group :assets do
   gem "coffee-rails", "3.2.2"
