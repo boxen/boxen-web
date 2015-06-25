@@ -1,18 +1,18 @@
-ruby   "2.2.2"
+ruby   "2.1.6"
 source "https://rubygems.org"
 
-gem "dotenv",             "0.4.0"
-gem "erubis",             "2.7.0"
-gem "jquery-rails",       "2.1.4"
-gem "omniauth-github",    "1.1.2"
-gem "pg",                 "0.18.2"
-gem "rails",              "~> 3.2.22"
-gem "unicorn",            "4.9.0"
+gem "dotenv"
+gem "erubis"
+gem "jquery-rails"
+gem "omniauth-github"
+gem "pg"
+gem "rails", "~> 3"
+gem "unicorn"
 
 group :assets do
-  gem "coffee-rails", "3.2.2"
-  gem "sass-rails",   "3.2.5"
-  gem "uglifier",     "1.3.0"
+  gem "coffee-rails"
+  gem "sass-rails"
+  gem "uglifier"
 end
 
 group :development, :test do
