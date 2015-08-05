@@ -9,8 +9,8 @@ fi
 set +e
 OSX_VERSION=$(sw_vers -productVersion | awk -F "." '{print $2}')
 
-if [ "$OSX_VERSION" -lt 8 ] || [ "$OSX_VERSION" -gt 10 ]; then
-    echo 'You must be running on Mountain Lion, Mavericks or Yosemite!'
+if [ "$OSX_VERSION" -lt 8 ] || [ "$OSX_VERSION" -gt 11 ]; then
+    echo 'You must be running on Mountain Lion, Mavericks, Yosemite or El Capitan!'
     exit 1
 fi
 set -e
