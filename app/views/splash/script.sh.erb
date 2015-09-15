@@ -39,13 +39,13 @@ echo "
 --> For added privacy invasion I'll need your local account's password."
 sudo -p "    Password for sudo: " echo "    Sweet, thanks. I'll see you in Vegas, sucker."
 
-# on 10.9 and 10.10, we can leverage SUS to get the latest CLI tools
+# on 10.9 and above we can leverage SUS to get the latest CLI tools
 if [[ "$OSX_VERSION" -ge 9 ]] && [[ ! -d /usr/include ]]; then
   echo "
 --> Installing command-line tools for OS X ${OSX_VERSION}"
 
   [ "$OSX_VERSION" -eq 9 ]  && TOOLS_REGEX="Command Line Developer"
-  [ "$OSX_VERSION" -eq 10 ] && TOOLS_REGEX="Command Line Tools"
+  [ "$OSX_VERSION" -ge 10 ] && TOOLS_REGEX="Command Line Tools"
   PLACEHOLDER=/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
 
   # create the placeholder file that's checked by CLI updates' .dist code
