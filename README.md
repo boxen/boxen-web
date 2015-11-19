@@ -23,6 +23,7 @@ heroku config:set \
   REPOSITORY="our-org/our-boxen" \
   GITHUB_CLIENT_ID="REDACTED" \
   GITHUB_CLIENT_SECRET="REDACTED" \
+  GITHUB_ORG=my-github-org \
   GITHUB_TEAM_ID=99999999 \
   GITHUB_LOGIN=my-github-login \
   SECONDARY_MESSAGE="Do a thing before running the command below." \
@@ -62,6 +63,7 @@ should be set via `heroku config:set`:
   * `GITHUB_CLIENT_SECRET` for OAuth.
   * `SECRET_TOKEN` for cookie signing. Minimum length is 30 characters.
 * optional
+  * `GITHUB_ORG` to restrict access to members of an organization.
   * `GITHUB_TEAM_ID` to restrict access to members of a team.
   * `GITHUB_LOGIN` to restrict access to a single user by login name.
   * `SECONDARY_MESSAGE` to display an optional message on the main page.
