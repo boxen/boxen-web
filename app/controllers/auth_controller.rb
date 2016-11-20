@@ -4,10 +4,10 @@ class AuthController < ApplicationController
   def create
     if access?
       user = User.where(
-        :github_id => auth_hash['uid'],
-        :login => auth_hash['info']['nickname']
+        :github_id => auth_hash['uid']
       ).first_or_create
 
+      user.login = auth_hash['info']['nickname']
       user.access_token = auth_hash.credentials['token']
       user.save
 
