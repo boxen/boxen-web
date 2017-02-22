@@ -6,7 +6,7 @@ gem "erubis"
 gem "jquery-rails"
 gem "omniauth-github"
 gem "pg"
-gem "rails", "~> 3"
+gem "rails", "~> 4"
 gem "unicorn"
 
 group :assets do
