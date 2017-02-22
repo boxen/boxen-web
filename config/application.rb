@@ -15,9 +15,6 @@ module Boxen
     # don"t allow unescaped HTML in JSON
     config.active_support.escape_html_entities_in_json = true
 
-    # require attr_accessible or attr_protected
-    config.active_record.whitelist_attributes = true
-
     # let"s use the asset pipeline
     config.assets.enabled = true
     config.assets.initialize_on_precompile = false
