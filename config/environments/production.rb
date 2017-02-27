@@ -9,4 +9,5 @@ Boxen::Application.configure do
   config.force_ssl                         = true
   config.i18n.fallbacks                    = true
   config.serve_static_assets               = false
+  config.eager_load                        = true
 end

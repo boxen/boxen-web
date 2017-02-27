@@ -1,4 +1,4 @@
-ruby   "2.1.6"
+ruby   "2.3.3"
 source "https://rubygems.org"
 
 gem "dotenv"
@@ -6,7 +6,7 @@ gem "erubis"
 gem "jquery-rails"
 gem "omniauth-github"
 gem "pg"
-gem "rails", "~> 3"
+gem "rails", "~> 4"
 gem "unicorn"
 
 group :assets do
