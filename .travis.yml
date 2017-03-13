@@ -1,0 +1,6 @@
+language: ruby
+sudo: false
+rvm: 2.3.3
+before_install: gem install bundler
+script:
+  - bundle exec brakeman -z

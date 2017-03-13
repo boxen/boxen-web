@@ -38,6 +38,7 @@ GEM
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (6.0.4)
+    brakeman (3.5.0)
     builder (3.2.3)
     coderay (1.1.1)
     coffee-rails (4.2.1)
@@ -180,6 +181,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  brakeman
   coffee-rails
   dotenv
   erubis

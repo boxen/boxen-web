@@ -18,4 +18,5 @@ end
 group :development, :test do
   gem "heroku"
   gem "pry"
+  gem "brakeman"
 end
