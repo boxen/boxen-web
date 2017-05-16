@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  attr_accessor :github_id, :login
-
   def self.for_short_access_token(token)
     where("LEFT(access_token, 8) = ?", token)
   end
