@@ -39,7 +39,23 @@ echo "
 --> For added privacy invasion I'll need your local account's password."
 sudo -p "    Password for sudo: " echo "    Sweet, thanks. I'll see you in Vegas, sucker."
 
+if [ ! $(xcodebuild -version > /dev/null 2>&1) ]; then
+  printf "%s\n" $'
+
+First you will need to install Xcode.
+
+1. Go to the App Store and install Xcode.
+2. Open Xcode and agree to the terms of service.
+
+I\'ll start working again as soon as I see that Xcode/agreement...'
+
+  until $(xcodebuild -version > /dev/null 2>&1) && ! $(xcodebuild 2>&1 > /dev/null | grep -q license); do
+    sleep 60
+  done
+fi
+
 # on 10.9 and above we can leverage SUS to get the latest CLI tools
+
 if [[ "$OSX_VERSION" -ge 9 ]] && [[ ! -d /usr/include ]]; then
   echo "
 --> Installing command-line tools for OS X ${OSX_VERSION}"
